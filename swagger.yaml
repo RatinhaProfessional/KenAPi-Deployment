@@ -1,0 +1,163 @@
+openapi: 3.0.0
+info:
+  title: KanAPI
+  description: REST API with the quotes of the greatest Jedi of all time
+  version: 0.1.9
+servers:
+  - url: http://localhost:4000/api/
+    description: Localhost dev server
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: auth-token
+
+  schemas:
+    Quote:
+      type: object
+      properties:
+        title:
+          type: string
+        text:
+          type: string
+        origin:
+          type: string
+        author:
+          type: string
+
+    User:
+      type: object
+      properties:
+        name: 
+          type: string
+        email: 
+          type: string
+        password:
+          type: string
+paths:
+  /user/register:
+    post:
+      summary: Register new user
+      description: Register new user in database.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+        
+      responses:
+        200:
+          description: User registered successfully.
+        400:
+          description: Bad request, name or email already exists.
+
+  /user/login:
+    post:
+      summary: Log in user
+      description: Log in as existing user in the database.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+        
+      responses:
+        200:
+          description: Log in successful.
+        400:
+          description: Bad request, wrong email or password.
+
+  /quotes:
+    post:
+      summary: Create new quote
+      description: Create new quote in the database.
+      security:
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Quote"
+      
+      responses:
+        200:
+          description: Quote updated successfully.
+        400:
+          description: Bad request, check the body format.
+
+    get:
+      summary: Get random quote
+      description: Get random quote from database as JSON object.
+      responses:
+        200:
+          description: Retrieves randomly generated quote.
+          content: 
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Quote"
+
+  /quotes/all:
+    get:
+      summary: Get all quotes
+      description: Get all quotes from database as JSON objects.
+      responses:
+        200:
+          description: Retrieves all quotes.
+          content: 
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Quote"
+
+  /quotes/{id}:
+    put:
+      summary: Update existing quote
+      description: Update a quote in the database.
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: MongoDB id
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Quote"
+
+      responses:
+        200:
+          description: Quote updated successfully.
+        400:
+          description:  Bad request, id is wrong or doesn't exist.
+
+    delete:
+        summary: Delete existing quote
+        description: Delete a quote in the database.
+        security:
+          - ApiKeyAuth: []
+        parameters:
+          - in: path
+            name: id
+            required: true
+            description: MongoDB id
+            schema:
+              type: string
+        
+        responses:
+        200:
+          description: Quote deleted successfully.
+        400:
+          description: Bad request, id is wrong or doesn't exist.
+  
