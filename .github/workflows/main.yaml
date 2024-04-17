@@ -27,6 +27,7 @@ jobs:
       - name: NPM install, build and test
         run: |
           npm install
+          npm run
           npm test
         env:
           DB_HOST: ${{ secret.DB_HOST}}
