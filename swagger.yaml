@@ -4,8 +4,8 @@ info:
   description: REST API with the quotes of the greatest Jedi of all time
   version: 0.1.9
 servers:
-  - url: http://localhost:4000/api/
-    description: Localhost dev server
+  - url: https://kenapi-deployment.onrender.com
+    description: Render.com dev server
 components:
   securitySchemes:
     ApiKeyAuth:
