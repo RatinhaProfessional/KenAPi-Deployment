@@ -4,7 +4,7 @@ info:
   description: REST API with the quotes of the greatest Jedi of all time
   version: 0.1.9
 servers:
-  - url: https://kenapi-deployment.onrender.com
+  - url: https://kenapi-deployment.onrender.com/api
     description: Render.com dev server
 components:
   securitySchemes:
