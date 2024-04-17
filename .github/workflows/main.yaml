@@ -21,7 +21,7 @@ jobs:
           fetch-depth: 0
 
       - name: Use Node.JS ${{ matrix.node-version }}
-        use: action/setup-node@v4
+        uses: action/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
