@@ -85,21 +85,20 @@ describe("User Workflow Test Collection", () => {
           });
       });
   });
+
   it("should register user with invalid input", (done) => {
-    // 1) Register new user with invalid inputs
+    // Register new user with invalid inputs
     let user = {
       name: "Wreacker",
       email: "Wreacker@clone99.com",
-      password: "123", //Faulty password - Joi/validation should catch this...
+      password: "123", 
     };
     chai
       .request(server)
       .post("/api/user/register")
       .send(user)
       .end((err, res) => {
-        // Asserts
-        expect(res.status).to.be.equal(400); //normal expect with no custom output message
-        //expect(res.status,"Status is not 400 (NOT FOUND)").to.be.equal(400); //custom output message at fail
+        expect(res.status).to.be.equal(400); 
 
         expect(res.body).to.be.a("object");
         expect(res.body.error).to.be.equal(
