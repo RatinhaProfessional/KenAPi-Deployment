@@ -91,14 +91,14 @@ describe("User Workflow Test Collection", () => {
     let user = {
       name: "Wreacker",
       email: "Wreacker@clone99.com",
-      password: "123", 
+      password: "123",
     };
     chai
       .request(server)
       .post("/api/user/register")
       .send(user)
       .end((err, res) => {
-        expect(res.status).to.be.equal(400); 
+        expect(res.status).to.be.equal(400);
 
         expect(res.body).to.be.a("object");
         expect(res.body.error).to.be.equal(

@@ -3,3 +3,4 @@
 .env.development
 .env.test
 package-lock.json
+node_modules
