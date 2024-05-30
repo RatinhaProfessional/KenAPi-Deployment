@@ -1,3 +1,12 @@
+/*
+ ----------------------------------------------------------------------------------------
+ Endpoints for user routes.
+ ----------------------------------------------------------------------------------------
+ Here's specified logic for registering new user and log in existing one. Name and email 
+ validation against the DB, password hashing and salting.
+
+*/
+
 const router = require("express").Router();
 const user = require("../models/user.js");
 const bcrypt = require("bcrypt");

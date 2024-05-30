@@ -1,3 +1,12 @@
+/*
+ ----------------------------------------------------------------------------------------
+ Endpoints for quotes routes.
+ ----------------------------------------------------------------------------------------
+ Here's specified logic for fetching, sending, editing and deleting quotes in the DB 
+ based on queries.
+
+*/
+
 const router = require("express").Router();
 const quotes = require("../models/quotes.js");
 const {jwtValidation} = require("../validation.js");

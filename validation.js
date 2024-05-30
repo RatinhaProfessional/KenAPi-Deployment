@@ -1,3 +1,12 @@
+/*
+ ----------------------------------------------------------------------------------------
+ Validate and/or register new user by name, email and password.
+ Assigning token to request headers.
+ ----------------------------------------------------------------------------------------
+ Here's the logic to validate the login and register input against DB and token 
+ assignment to request headers.
+*/
+
 const Joi = require("joi");
 const jwt = require("jsonwebtoken");
 

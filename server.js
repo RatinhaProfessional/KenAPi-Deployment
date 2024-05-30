@@ -1,3 +1,13 @@
+/*
+ ----------------------------------------------------------------------------------------
+ Server file specifying db connection, routes, server start up and swagger documentation 
+ ----------------------------------------------------------------------------------------
+ Here's specified logic for database connection with the app by DB_Host and parameters
+ for it. Definition of routs for quotes endpoints and user. Port choice for server start
+ up. And route for swagger documentation.
+ 
+*/
+
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
